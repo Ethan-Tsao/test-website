@@ -304,41 +304,62 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "Inspiration",
+    label: "Portfolio",
+    // children: [
+    //   {
+    //     label: "Explore Design Work",
+    //     subLabel: "Trending Design to inspire you",
+    //     href: "#",
+    //   },
+    //   {
+    //     label: "New & Noteworthy",
+    //     subLabel: "Up-and-coming Designers",
+    //     href: "#",
+    //   },
+    // ],
+  },
+  // {
+  //   label: "Mechanical Keyboards",
+  //   children: [
+  //     {
+  //       label: "Job Board",
+  //       subLabel: "Find your dream design job",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Freelance Projects",
+  //       subLabel: "An exclusive list for contract work",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+  {
+    label: "Personal Blog",
     children: [
       {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
+        label: "Mechanical Keyboards",
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label: "Programming",
+        href: "#",
+      },
+      {
+        label: "Video Games",
+        href: "#",
+      },
+      {
+        label: "Books",
         href: "#",
       },
     ],
   },
+  // {
+  //   label: "Programming",
+  //   href: "#",
+  // },
   {
-    label: "Find Work",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
-        href: "#",
-      },
-      {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Learn Design",
-    href: "#",
-  },
-  {
-    label: "Hire Designers",
+    label: "About Me",
     href: "#",
   },
 ];

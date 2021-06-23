@@ -27,6 +27,7 @@
     "concurrently": "^6.2.0"
   },
   "devDependencies": {
+    "cypress": "^7.5.0",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1"
   }
