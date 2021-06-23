@@ -16,6 +16,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
+// refactor notes
+// object with blog image, blog title, blog description, tags, author, and date
+
 interface IBlogTags {
   tags: Array<string>;
   marginTop?: SpaceProps["marginTop"];
@@ -26,7 +29,7 @@ const BlogTags: React.FC<IBlogTags> = (props) => {
     <HStack spacing={2} marginTop={props.marginTop}>
       {props.tags.map((tag) => {
         return (
-          <Tag size={"md"} variant="solid" colorScheme="orange" key={tag}>
+          <Tag size={"md"} variant="solid" colorScheme="blue" key={tag}>
             {tag}
           </Tag>
         );
@@ -76,8 +79,6 @@ export const BlogCard = () => {
       display="flex"
       flexDirection={{ base: "column", sm: "row" }}
       justifyContent="space-between"
-      //   borderWidth={3}
-      //   borderColor="white"
       rounded={12}
       boxShadow="2xl"
       paddingBottom={{ base: "1", sm: "5" }}
