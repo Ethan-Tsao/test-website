@@ -34,14 +34,14 @@ export default function Navbar() {
   return (
     <Box py={3}>
       <Flex
-        bg={useColorModeValue("solarizedLight.600", "solarizedDark.600")}
-        color={useColorModeValue("gray.600", "white")}
+        // bg={useColorModeValue("solarizedLight.600", "solarizedDark.600")}
+        // color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        // borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
         <Flex
@@ -64,7 +64,7 @@ export default function Navbar() {
               <Text
                 textAlign={useBreakpointValue({ base: "center", md: "left" })}
                 fontFamily={"heading"}
-                color={useColorModeValue("gray.800", "white")}
+                // color={useColorModeValue("gray.800", "white")}
                 fontSize="3xl"
                 fontWeight="semibold"
               >
@@ -163,20 +163,20 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{
-        bg: useColorModeValue("solarizedDark.500", "solarizedLight.600"),
-      }}
+      // _hover={{
+      //   bg: useColorModeValue("solarizedDark.500", "solarizedLight.600"),
+      // }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
-            _groupHover={{
-              color: useColorModeValue(
-                "solarizedLight.600",
-                "solarizedDark.500"
-              ),
-            }}
+            // _groupHover={{
+            //   color: useColorModeValue(
+            //     "solarizedLight.600",
+            //     "solarizedDark.500"
+            //   ),
+            // }}
             fontWeight={500}
             align={"left"}
           >
@@ -184,12 +184,12 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           </Text>
           <Text
             fontSize={"sm"}
-            _groupHover={{
-              color: useColorModeValue(
-                "solarizedLight.600",
-                "solarizedDark.500"
-              ),
-            }}
+            // _groupHover={{
+            //   color: useColorModeValue(
+            //     "solarizedLight.600",
+            //     "solarizedDark.500"
+            //   ),
+            // }}
           >
             {subLabel}
           </Text>
@@ -204,7 +204,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           flex={1}
         >
           <Icon
-            color={useColorModeValue("solarizedLight.600", "solarizedDark.500")}
+            // color={useColorModeValue("solarizedLight.600", "solarizedDark.500")}
             w={5}
             h={5}
             as={ChevronRightIcon}
@@ -218,7 +218,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue("solarizedLight.600", "solarizedDark.600")}
+      // bg={useColorModeValue("solarizedLight.600", "solarizedDark.600")}
       p={4}
       display={{ md: "none" }}
     >
@@ -246,7 +246,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       >
         <Text
           fontWeight={600}
-          color={useColorModeValue("solarizedDark.600", "solarizedLight.500")}
+          // color={useColorModeValue("solarizedDark.600", "solarizedLight.500")}
         >
           {label}
         </Text>
@@ -257,7 +257,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             transform={isOpen ? "rotate(180deg)" : ""}
             w={6}
             h={6}
-            color={useColorModeValue("solarizedDark.600", "solarizedLight.500")}
+            // color={useColorModeValue("solarizedDark.600", "solarizedLight.500")}
           />
         )}
       </Flex>
@@ -268,10 +268,10 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           pl={4}
           borderLeft={1}
           borderStyle={"solid"}
-          borderColor={useColorModeValue(
-            "solarizedDark.600",
-            "solarizedLight.500"
-          )}
+          // borderColor={useColorModeValue(
+          //   "solarizedDark.600",
+          //   "solarizedLight.500"
+          // )}
           align={"start"}
         >
           {children &&
@@ -280,10 +280,10 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
                 key={child.label}
                 py={2}
                 href={child.href}
-                color={useColorModeValue(
-                  "solarizedDark.600",
-                  "solarizedLight.500"
-                )}
+                // color={useColorModeValue(
+                //   "solarizedDark.600",
+                //   "solarizedLight.500"
+                // )}
                 fontWeight="semibold"
               >
                 {child.label}
@@ -350,7 +350,7 @@ const NAV_ITEMS: Array<NavItem> = [
       },
       {
         label: "Books",
-        href: "#",
+        href: "/bookBlog",
       },
     ],
   },

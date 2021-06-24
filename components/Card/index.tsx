@@ -5,15 +5,13 @@ import {
   Link,
   Image,
   Text,
-  Divider,
   HStack,
   Tag,
-  Wrap,
-  WrapItem,
   SpaceProps,
   useColorModeValue,
   Container,
-  VStack,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
 
 // refactor notes
@@ -54,17 +52,17 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
       />
       <Text
         fontWeight="medium"
-        color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
+        // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
       >
         {props.name}
       </Text>
       <Text
-        color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
+      // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
       >
         —
       </Text>
       <Text
-        color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
+      // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
       >
         {props.date.toLocaleDateString()}
       </Text>
@@ -82,7 +80,7 @@ export const BlogCard = () => {
       rounded={12}
       boxShadow="2xl"
       paddingBottom={{ base: "1", sm: "5" }}
-      bg={useColorModeValue("solarizedLight.400", "solarizedDark.600")}
+      // bg={useColorModeValue("solarizedLight.400", "solarizedDark.600")}
     >
       {/* blog post image box */}
       <Box
@@ -123,7 +121,7 @@ export const BlogCard = () => {
           <Link
             textDecoration="none"
             _hover={{ textDecoration: "none" }}
-            color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
+            // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
           >
             Blog article title
           </Link>
@@ -131,12 +129,12 @@ export const BlogCard = () => {
         <Text
           as="p"
           marginTop="2"
-          color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
+          // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
           fontSize="lg"
           textAlign="left"
         >
           Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          industry. Lorem Ipsum has been the industrys standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
           scrambled it to make a type specimen book.
         </Text>
@@ -149,12 +147,12 @@ export const BlogCard = () => {
 const ArticleList = () => {
   return (
     <Container maxW={"7xl"} rounded={8} py={5}>
-      <Heading
+      {/* <Heading
         as="h1"
         color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
       >
         Stories by Chakra Templates
-      </Heading>
+      </Heading> */}
       {/* blog post section */}
       <BlogCard />
       <BlogCard />
