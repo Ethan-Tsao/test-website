@@ -1,33 +1,39 @@
-import { Text, Flex, Heading, Box } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Heading,
+  Box,
+  useColorModeValue,
+  Image,
+} from "@chakra-ui/react";
 import Navbar from "components/Navbar";
 
 const BlogPage = ({ title, description, text, author, img, slug, tags }) => {
+  const mode = useColorModeValue("solarizedDark.600", "solarizedLight.500");
+  const paragraphs = text;
   return (
     <>
       <Box maxW="65%" mx="auto" px={{ base: "6", lg: "8" }}>
         <Navbar />
-        <Flex margin={4} flexDirection="column">
-          <Heading as="h1" size="lg" py={5} textAlign="center">
-            title is {`"${title}"`}
+        <Flex margin={4} flexDirection="column" px={{ base: "6", lg: "8" }}>
+          <Heading as="h1" size="2xl" py={5} textAlign="center" color={mode}>
+            {title}
           </Heading>
-          <Heading as="h1" size="lg" py={5}>
-            desc is {`"${description}"`}
-          </Heading>
-          <Heading as="h1" size="lg" py={5}>
-            text is {`"${text}"`}
-          </Heading>
-          <Heading as="h1" size="lg" py={5}>
+          <Heading as="h1" size="lg" py={5} color={mode}>
             author is {`"${author}"`}
           </Heading>
-          <Heading as="h1" size="lg" py={5}>
-            image is {`"${img}"`}
-          </Heading>
-          <Heading as="h1" size="lg" py={5}>
-            slug is {`"${slug}"`}
-          </Heading>
-          <Heading as="h1" size="lg" py={5}>
-            tags are {`"${tags}"`}
-          </Heading>
+          <Image w="100%" src={img} my={8} />
+          {paragraphs.map((paragraph) => {
+            return (
+              <Flex>
+                <Text fontSize="2xl" color={mode} py="1rem">
+                  {paragraph}
+                </Text>
+                <br />
+                <br />
+              </Flex>
+            );
+          })}
         </Flex>
       </Box>
     </>

@@ -15,7 +15,12 @@ interface BookBlogProps {
 
 const BookBlog: NextPage<BookBlogProps> = () => {
   return (
-    <Box maxW="65%" mx="auto" px={{ base: "6", lg: "8" }} align="center">
+    <Box
+      maxW={{ base: "90%", lg: "65%" }}
+      mx="auto"
+      px={{ base: "6", lg: "8" }}
+      align="center"
+    >
       <Navbar />
       <BookBlogPage />
     </Box>

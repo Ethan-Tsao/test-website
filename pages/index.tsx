@@ -6,7 +6,12 @@ import BookBlogPage from "components/Pages/Blog/Books";
 
 export default function IndexPage() {
   return (
-    <Box maxW="65%" mx="auto" px={{ base: "6", lg: "8" }} align="center">
+    <Box
+      maxW={{ base: "90%", lg: "65%" }}
+      mx="auto"
+      px={{ base: "6", lg: "8" }}
+      align="center"
+    >
       <Navbar />
     </Box>
   );

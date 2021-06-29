@@ -82,14 +82,15 @@ const BlogCard = (props) => {
     <Box
       marginTop={{ base: "1", sm: "5" }}
       display="flex"
-      flexDirection={{ base: "column", sm: "row" }}
-      justifyContent="space-between"
+      flexDirection={{ base: "column", md: "row" }}
+      justifyContent="center"
       rounded={12}
       boxShadow="2xl"
       paddingBottom={{ base: "1", sm: "5" }}
       bg={bgMode}
-      w="65rem"
-      h="30rem"
+      // w={["40rem", "65rem"]}
+      w="100%"
+      h={{ base: "flex", lg: "30rem" }}
     >
       {/* blog post image box */}
       <Box display="flex" flex="1" position="relative" alignItems="center">
@@ -99,14 +100,16 @@ const BlogCard = (props) => {
           marginLeft={{ base: "0", sm: "5%" }}
           marginTop="5%"
         >
-          <Link textDecoration="none" _hover={{ textDecoration: "none" }}>
-            <Image
-              borderRadius="lg"
-              src={props.img}
-              alt="some good alt text"
-              objectFit="contain"
-            />
-          </Link>
+          <LinkBox>
+            <LinkOverlay href={props.link}>
+              <Image
+                borderRadius="lg"
+                src={props.img}
+                alt="some good alt text"
+                objectFit="contain"
+              />
+            </LinkOverlay>
+          </LinkBox>
         </Box>
       </Box>
       {/* blog info box */}
@@ -114,7 +117,7 @@ const BlogCard = (props) => {
         display="flex"
         flex="1"
         flexDirection="column"
-        // justifyContent="center"
+        alignContent={{ base: "center", md: "left" }}
         marginTop={10}
         marginRight={3}
       >
@@ -127,15 +130,30 @@ const BlogCard = (props) => {
             );
           })}
         </HStack> */}
-        <Heading marginTop="1" textAlign="left" size="2xl">
-          <LinkBox>
-            <LinkOverlay href={props.link}>{props.title}</LinkOverlay>
-          </LinkBox>
-        </Heading>
-        <Text as="p" my="2" color={mode} fontSize="2xl" textAlign="left">
+        <LinkBox>
+          <LinkOverlay href={props.link} color={mode}>
+            <Heading
+              marginTop="1"
+              textAlign={{ base: "center", md: "left" }}
+              size="2xl"
+            >
+              {props.title}
+            </Heading>
+          </LinkOverlay>
+        </LinkBox>
+        <Text
+          as="p"
+          my="2"
+          color={mode}
+          fontSize={["md", "lg", "xl", "2xl"]}
+          textAlign={{ base: "center", md: "left" }}
+        >
           {props.description}
         </Text>
-        <Flex alignContent="flex-end">
+        <Flex
+          alignContent="flex-end"
+          justifyContent={{ base: "center", md: "left" }}
+        >
           <BlogAuthor name={props.author} date={new Date()} />
         </Flex>
       </Box>

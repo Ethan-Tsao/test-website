@@ -12,7 +12,9 @@ This website uses Next.js and Chakra-UI. This will eventually be deployed to AWS
 
 Me, Ethan Tsao
 
-## To Do
+## Dev Notes
+
+### To Do
 
 - About Me
 - Portfolio
@@ -21,6 +23,16 @@ Me, Ethan Tsao
 - Sidebar on some pages?
 - Cypress testing
 - Twitter integration
+
+### Blog JSON Format
+
+title: string
+description: string
+text: string | string[]
+author: string
+img: string | string[]
+slug: string
+tags: string | string[]
 
 ## Resources
 
