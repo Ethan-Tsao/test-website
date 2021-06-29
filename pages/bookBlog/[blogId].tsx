@@ -1,15 +1,36 @@
-import { Text, Flex, Heading } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Text, Flex, Heading, Box } from "@chakra-ui/react";
+import Navbar from "components/Navbar";
 
-const BlogPage = ({ slug, title, text, lol }) => {
+const BlogPage = ({ title, description, text, author, img, slug, tags }) => {
   return (
-    <Flex margin={4}>
-      <Heading as="h1" size="lg">
-        text is {`"${text}"`}
-        title is {`"${title}"`}
-        slug is {`"${slug}"`}
-      </Heading>
-    </Flex>
+    <>
+      <Box maxW="65%" mx="auto" px={{ base: "6", lg: "8" }}>
+        <Navbar />
+        <Flex margin={4} flexDirection="column">
+          <Heading as="h1" size="lg" py={5} textAlign="center">
+            title is {`"${title}"`}
+          </Heading>
+          <Heading as="h1" size="lg" py={5}>
+            desc is {`"${description}"`}
+          </Heading>
+          <Heading as="h1" size="lg" py={5}>
+            text is {`"${text}"`}
+          </Heading>
+          <Heading as="h1" size="lg" py={5}>
+            author is {`"${author}"`}
+          </Heading>
+          <Heading as="h1" size="lg" py={5}>
+            image is {`"${img}"`}
+          </Heading>
+          <Heading as="h1" size="lg" py={5}>
+            slug is {`"${slug}"`}
+          </Heading>
+          <Heading as="h1" size="lg" py={5}>
+            tags are {`"${tags}"`}
+          </Heading>
+        </Flex>
+      </Box>
+    </>
   );
 };
 
@@ -47,8 +68,6 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  console.log("PARAMS => ", params);
-
   // Get the path to pre-render
   const { blogId } = params;
 
@@ -56,11 +75,13 @@ export const getStaticProps = async ({ params }) => {
   const blogs = (await import("components/Pages/Blog/Books/blogs.json"))
     .default;
   const blog = blogs.find((blog) => blog.slug === blogId);
-  const { slug, title, text } = blog;
+
+  // Destructure the returned item (optional)
+  const { title, description, text, author, img, slug, tags } = blog;
+
   // Return page info as props to the page
   return {
-    props: { slug, title, text, lol: "HA" },
-    revalidate: true,
+    props: { title, description, text, author, img, slug, tags },
   };
 };
 

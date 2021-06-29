@@ -12,29 +12,42 @@ import {
   Container,
   LinkBox,
   LinkOverlay,
+  Flex,
 } from "@chakra-ui/react";
+import bookJson from "components/Pages/Blog/Books/blogs.json";
 
 // refactor notes
 // object with blog image, blog title, blog description, tags, author, and date
+/*
+[
+  {
+    "title": "some title",
+    "description": "some short description",
+    "text": "some text",
+    "author": "author",
+    "img": "image path",
+    "tags": [tag1, tag2, tag3]
+  }
+]
+// */
+// interface IBlogTags {
+//   tags: string[];
+//   marginTop?: SpaceProps["marginTop"];
+// }
 
-interface IBlogTags {
-  tags: Array<string>;
-  marginTop?: SpaceProps["marginTop"];
-}
-
-const BlogTags: React.FC<IBlogTags> = (props) => {
-  return (
-    <HStack spacing={2} marginTop={props.marginTop}>
-      {props.tags.map((tag) => {
-        return (
-          <Tag size={"md"} variant="solid" colorScheme="blue" key={tag}>
-            {tag}
-          </Tag>
-        );
-      })}
-    </HStack>
-  );
-};
+// const BlogTags: React.FC<IBlogTags> = (props) => {
+//   return (
+//     <HStack spacing={2} marginTop={props.marginTop}>
+//       {props.tags.map((tag) => {
+//         return (
+//           <Tag size={"md"} variant="solid" colorScheme="blue" key={tag}>
+//             {tag}
+//           </Tag>
+//         );
+//       })}
+//     </HStack>
+//   );
+// };
 
 interface BlogAuthorProps {
   date: Date;
@@ -42,6 +55,8 @@ interface BlogAuthorProps {
 }
 
 export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
+  const mode = useColorModeValue("solarizedDark.600", "solarizedLight.400");
+
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
       <Image
@@ -50,27 +65,19 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
         src="https://100k-faces.glitch.me/random-image"
         alt={`Avatar of ${props.name}`}
       />
-      <Text
-        fontWeight="medium"
-        // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
-      >
+      <Text fontWeight="medium" color={mode}>
         {props.name}
       </Text>
-      <Text
-      // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
-      >
-        —
-      </Text>
-      <Text
-      // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
-      >
-        {props.date.toLocaleDateString()}
-      </Text>
+      <Text color={mode}>—</Text>
+      <Text color={mode}>{props.date.toLocaleDateString()}</Text>
     </HStack>
   );
 };
 
-export const BlogCard = () => {
+const BlogCard = (props) => {
+  const bgMode = useColorModeValue("solarizedLight.400", "solarizedDark.600");
+  const mode = useColorModeValue("solarizedDark.600", "solarizedLight.400");
+
   return (
     <Box
       marginTop={{ base: "1", sm: "5" }}
@@ -80,16 +87,12 @@ export const BlogCard = () => {
       rounded={12}
       boxShadow="2xl"
       paddingBottom={{ base: "1", sm: "5" }}
-      // bg={useColorModeValue("solarizedLight.400", "solarizedDark.600")}
+      bg={bgMode}
+      w="65rem"
+      h="30rem"
     >
       {/* blog post image box */}
-      <Box
-        display="flex"
-        flex="1"
-        marginRight="3"
-        position="relative"
-        alignItems="center"
-      >
+      <Box display="flex" flex="1" position="relative" alignItems="center">
         <Box
           width={{ base: "100%", sm: "85%" }}
           zIndex="2"
@@ -99,9 +102,7 @@ export const BlogCard = () => {
           <Link textDecoration="none" _hover={{ textDecoration: "none" }}>
             <Image
               borderRadius="lg"
-              src={
-                "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-              }
+              src={props.img}
               alt="some good alt text"
               objectFit="contain"
             />
@@ -113,51 +114,33 @@ export const BlogCard = () => {
         display="flex"
         flex="1"
         flexDirection="column"
-        justifyContent="center"
-        marginTop={{ base: "3", sm: "0" }}
+        // justifyContent="center"
+        marginTop={10}
+        marginRight={3}
       >
-        <BlogTags tags={["Engineering", "Product"]} />
-        <Heading marginTop="1" textAlign="left">
-          <Link
-            textDecoration="none"
-            _hover={{ textDecoration: "none" }}
-            // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
-          >
-            Blog article title
-          </Link>
+        {/* <HStack spacing={2}>
+          {props.tags.map((tag) => {
+            return (
+              <Tag size={"md"} variant="solid" colorScheme="blue" key={tag}>
+                {tag}
+              </Tag>
+            );
+          })}
+        </HStack> */}
+        <Heading marginTop="1" textAlign="left" size="2xl">
+          <LinkBox>
+            <LinkOverlay href={props.link}>{props.title}</LinkOverlay>
+          </LinkBox>
         </Heading>
-        <Text
-          as="p"
-          marginTop="2"
-          // color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
-          fontSize="lg"
-          textAlign="left"
-        >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
+        <Text as="p" my="2" color={mode} fontSize="2xl" textAlign="left">
+          {props.description}
         </Text>
-        <BlogAuthor name="John Doe" date={new Date("2021-04-06T19:01:27Z")} />
+        <Flex alignContent="flex-end">
+          <BlogAuthor name={props.author} date={new Date()} />
+        </Flex>
       </Box>
     </Box>
   );
 };
 
-const ArticleList = () => {
-  return (
-    <Container maxW={"7xl"} rounded={8} py={5}>
-      {/* <Heading
-        as="h1"
-        color={useColorModeValue("solarizedDark.600", "solarizedLight.400")}
-      >
-        Stories by Chakra Templates
-      </Heading> */}
-      {/* blog post section */}
-      <BlogCard />
-      <BlogCard />
-    </Container>
-  );
-};
-
-export default ArticleList;
+export default BlogCard;

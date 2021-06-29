@@ -1,13 +1,13 @@
 import NextLink from "next/link";
 import { Link, Flex, Box, Heading } from "@chakra-ui/react";
 import { NextPage, GetStaticProps } from "next";
+import BlogCard from "components/Card";
 import bookJson from "./blogs.json";
 
-const BookBlogComponent = () => {
+const BookBlogPage = () => {
   return (
     <Box>
       <Flex flexDirection="column" alignItems="center">
-        <Heading marginY="2rem">Table of Contents</Heading>
         {bookJson.map((x) => {
           return (
             <NextLink
@@ -15,11 +15,14 @@ const BookBlogComponent = () => {
               passHref
               key={`/bookBlog/${x.slug}`}
             >
-              <Link>
-                <Heading as="h3" size="lg">
-                  {x.title}
-                </Heading>
-              </Link>
+              <BlogCard
+                title={x.title}
+                description={x.description}
+                author={x.author}
+                tags={x.tags}
+                img={x.img}
+                link={`/bookBlog/${x.slug}`}
+              />
             </NextLink>
           );
         })}
@@ -28,4 +31,4 @@ const BookBlogComponent = () => {
   );
 };
 
-export default BookBlogComponent;
+export default BookBlogPage;
