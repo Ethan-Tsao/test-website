@@ -7,6 +7,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Navbar from "components/Navbar";
+import { BlogAuthor } from "components/Card/BlogAuthor";
 
 const BlogPage = ({ title, description, text, author, img, slug, tags }) => {
   const mode = useColorModeValue("solarizedDark.600", "solarizedLight.500");
@@ -19,9 +20,11 @@ const BlogPage = ({ title, description, text, author, img, slug, tags }) => {
           <Heading as="h1" size="2xl" py={5} textAlign="center" color={mode}>
             {title}
           </Heading>
-          <Heading as="h1" size="lg" py={5} color={mode}>
-            author is {`"${author}"`}
-          </Heading>
+          <Flex>
+            <Heading as="h1" size="md" color={mode}>
+              <BlogAuthor name={author} date={new Date()} />
+            </Heading>
+          </Flex>
           <Image w="100%" src={img} my={8} />
           {paragraphs.map((paragraph) => {
             return (

@@ -1,8 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import Navbar from "components/Navbar";
-import Footer from "components/Footer";
-import { HomePage } from "components/Pages/Home";
-import BookBlogPage from "components/Pages/Blog/Books";
+import Hero from "components/Hero";
 
 export default function IndexPage() {
   return (
@@ -13,6 +11,7 @@ export default function IndexPage() {
       align="center"
     >
       <Navbar />
+      <Hero />
     </Box>
   );
 }

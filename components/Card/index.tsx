@@ -14,22 +14,8 @@ import {
   LinkOverlay,
   Flex,
 } from "@chakra-ui/react";
-import bookJson from "components/Pages/Blog/Books/blogs.json";
+import { BlogAuthor } from "./BlogAuthor";
 
-// refactor notes
-// object with blog image, blog title, blog description, tags, author, and date
-/*
-[
-  {
-    "title": "some title",
-    "description": "some short description",
-    "text": "some text",
-    "author": "author",
-    "img": "image path",
-    "tags": [tag1, tag2, tag3]
-  }
-]
-// */
 // interface IBlogTags {
 //   tags: string[];
 //   marginTop?: SpaceProps["marginTop"];
@@ -49,31 +35,6 @@ import bookJson from "components/Pages/Blog/Books/blogs.json";
 //   );
 // };
 
-interface BlogAuthorProps {
-  date: Date;
-  name: string;
-}
-
-export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
-  const mode = useColorModeValue("solarizedDark.600", "solarizedLight.400");
-
-  return (
-    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
-      <Image
-        borderRadius="full"
-        boxSize="40px"
-        src="https://100k-faces.glitch.me/random-image"
-        alt={`Avatar of ${props.name}`}
-      />
-      <Text fontWeight="medium" color={mode}>
-        {props.name}
-      </Text>
-      <Text color={mode}>—</Text>
-      <Text color={mode}>{props.date.toLocaleDateString()}</Text>
-    </HStack>
-  );
-};
-
 const BlogCard = (props) => {
   const bgMode = useColorModeValue("solarizedLight.400", "solarizedDark.600");
   const mode = useColorModeValue("solarizedDark.600", "solarizedLight.400");
@@ -88,7 +49,6 @@ const BlogCard = (props) => {
       boxShadow="2xl"
       paddingBottom={{ base: "1", sm: "5" }}
       bg={bgMode}
-      // w={["40rem", "65rem"]}
       w="100%"
       h={{ base: "flex", lg: "30rem" }}
     >
